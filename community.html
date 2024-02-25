@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 2em auto;
+            background-color: white;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1em;
+        }
+
+        input, textarea {
+            margin-bottom: 1em;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 0.5em;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .comment {
+            margin-bottom: 1em;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+        .comment h4 {
+            margin-bottom: 0.5em;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        .positive {
+            color: green;
+        }
+
+        .negative {
+            color: red;
+        }
+
+        .neutral {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Community Page</h1>
+</header>
+
+<section>
+    <form action="/add_comment" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" required></textarea>
+        
+        <button type="submit">Add Comment</button>
+    </form>
+
+    {% for comment in comments %}
+        <div class="comment">
+            <h4>{{ comment.name }}</h4>
+            <p>{{ comment.comment }}</p>
+                 </div>
+    {% endfor %}
+</section>
+
+</body>
+</html>
